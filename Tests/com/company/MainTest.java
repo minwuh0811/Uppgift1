@@ -2,12 +2,10 @@ package com.company;
 
 import com.company.Main;
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.mock;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-    IRandomGenerator mock_RandomGenerator=mock(IRandomGenerator.class);
 
     void removeCharText() {
         Main main=new Main();
@@ -31,8 +29,19 @@ class MainTest {
         Integer intResult=23;
         assertEquals(main.textValue(stringTest),intResult);
     }
-    @Test
-    void MockRandomGeneration(){
 
+    @Test
+    void numberOfPlus() {
+        Main main=new Main();
+        int intInput=5;
+        String output="+++++";
+        assertEquals(main.numberOfPlus(intInput),output);
+    }
+
+    @Test
+    void printPlus() {
+        Main main=new Main();
+        int intInput=5;
+        assertEquals(main.printPlus(intInput).size(),intInput);
     }
 }
