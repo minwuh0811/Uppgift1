@@ -1,12 +1,14 @@
 package com.company;
 
+import com.company.Main;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
+    IRandomGenerator mock_RandomGenerator=mock(IRandomGenerator.class);
 
-    @org.junit.jupiter.api.Test
     void removeCharText() {
         Main main=new Main();
         String stringTest="Min Wu";
@@ -28,5 +30,9 @@ class MainTest {
         String stringTest="Hej";
         Integer intResult=23;
         assertEquals(main.textValue(stringTest),intResult);
+    }
+    @Test
+    void MockRandomGeneration(){
+
     }
 }
