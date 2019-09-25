@@ -22,12 +22,14 @@ public class Calculator {
         System.out.println( a + " * " + b + " = " + c);
         return c;
     }
-    public void division(double a, double b){
+    public double division(double a, double b)  {
         try {
             double c= a/b;
             System.out.println(a + " / " + b + " = " + c);
+            return c;
         }  catch (Exception e) {
             System.out.println("The second number can not be zero");
+            return 0;
         }
     }
 }

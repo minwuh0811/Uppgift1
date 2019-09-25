@@ -16,79 +16,110 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main main=new Main(new Scanner(System.in));
+        Main main = new Main(new Scanner(System.in));
         while (true) {
+            //ask user to choose from 1, 2 and 3
             System.out.println("Choose one from those choices: 1.New Text,2.New Number and 3.Exit");
             int choices = Integer.parseInt(getStringInput());
-            if (choices == 3) {
+            switch (choices) {
+                case 3:
                 System.out.println("Now Exit!!");
+                return;
+                case 1:
+                while (true) {
+                    System.out.println("Choose one from those choices: 1.Remove Char,2.text Value,3.Randomize and 4.Return");
+                    int number = Integer.parseInt(getStringInput());
+                    if (number == 4) {
+                        break;
+                    } else {
+                        newText(number);
+                    }
+                }
                 break;
-            } else if (choices == 1) {
-                newText();
-            } else if (choices==2) {
-                newNumber();
+                case 2:
+                while (true) {
+                    System.out.println("Choose one from those choices: 1. Get random number, 2. Print plus, 3. Create Calculator and 4.Return");
+                    int choice = Integer.parseInt(getStringInput());
+                    if (choice == 4) {
+                        break;
+                    } else {
+                        newNumber(choice);
+                    }
+                }
+                break;
+                default:
+                    System.out.println("The input is not valid.");
+                    break;
             }
         }
-        // write your code here
     }
 
-    private static void newText() {
-        while (true) {
-            System.out.println("Choose one from those choices: 1.Remove Char,2.text Value,3.Randomize and 4.Return");
-            int number = Integer.parseInt(getStringInput());
-            if (number == 4) {
-                break;
-            } else if (number == 1) {
+    private static void newText(int number) {
+        switch (number) {
+            case 1:
                 System.out.println("Enter a string:");
                 String string = getStringInput();
                 System.out.println("Enter a char:");
                 Character character = getStringInput().charAt(0);
                 System.out.println("The removed string is " + removeChar(string, character));
-            } else if (number == 2) {
+                break;
+            case 2:
                 System.out.println("Enter a String:");
-                String string = getStringInput();
+                string = getStringInput();
                 System.out.println("The text value is " + textValue(string));
-            } else if (number == 3) {
+                break;
+            case 3:
                 System.out.println("Enter a String:");
-                String string = getStringInput();
+                string = getStringInput();
                 StringBuilder random = randomize(string);
                 System.out.println("The output is " + random);
+                break;
+            default:
+                System.out.println("input is not valid.");
+                break;
             }
         }
 
-    }
+    
 
-    private static void newNumber(){
-        while (true) {
-            System.out.println("Choose one from those choices: 1. Get random number, 2. Print plus, 3. Create Calculator and 4.Return");
-            int choices=Integer.parseInt(getStringInput());
-            if (choices==4) {
-                break;
-            } else if (choices==1) {
+    private static void newNumber(int choices){
+        switch (choices) {
+            case 1:
                 System.out.println("Set an integer range: ");
                 int integerRange=Integer.parseInt(getStringInput());
                 int randomN=getRandomNumber(integerRange);
                 System.out.println("The random number is "+randomN);
-            } else if (choices==2) {
+                break;
+            case 2:
                 System.out.println("Enter the number of plus to print press 1 or choose a random number press 2");
                 int choice = Integer.parseInt(getStringInput());
-                if (choice == 1) {
-                    System.out.println("Enter the number of plus you want to print.");
-                    int number = Integer.parseInt(getStringInput());
-                    printPlus(number);
-                } else if (choice == 2) {
-                    System.out.println("Enter the integer range: ");
-                    int randomN = Integer.parseInt(getStringInput());
-                    int number = getRandomNumber(randomN);
-                    System.out.println("The random Number is "+number);
-                    printPlus(number);
+                switch (choice) {
+                    case 1:
+                        System.out.println("Enter the number of plus you want to print.");
+                        int number = Integer.parseInt(getStringInput());
+                        printPlus(number);
+                        break;
+                    case 2:
+                        System.out.println("Enter the integer range: ");
+                        randomN = Integer.parseInt(getStringInput());
+                        number = getRandomNumber(randomN);
+                        System.out.println("The random Number is " + number);
+                        printPlus(number);
+                        break;
+                    default:
+                        System.out.println("The input is not valid.");
                 }
-            } else if (choices==3) {
+                break;
+            case 3:
                 Calculator calculator=new Calculator();
                 createCal(calculator);
+                break;
+            default:
+                System.out.println("The input is not valid.");
+                break;
             }
         }
-    }
+
 
 
     public static String removeChar(String string, Character character) {
@@ -138,49 +169,60 @@ public class Main {
         return random.nextInt(input);
     }
     public static String numberOfPlus(int number) {
-        String outPut="+";
+        String outPut="";
         for(int i=0; i<number; i++) {
             outPut+="+";
         }
         return outPut;
     }
-    public static void printPlus(int number) {
+    public static ArrayList<String> printPlus(int number) {
         String outPut="";
-        for (int i=0; i<number; i++){
+        ArrayList<String> plusList=new ArrayList<String>();
+        for (int i=1; i<=number; i++){
+            plusList.add(numberOfPlus(i));
             System.out.println(numberOfPlus(i));
         }
+        return plusList;
     }
     public static void createCal(Calculator calculator) {
         while (true) {
             System.out.println("Choose the operations: 1. addition 2.subtraction 3.division 4.multiplication 5. Return");
             int choose =Integer.parseInt(getStringInput());
-            if (choose == 1) {
-                System.out.println("Addition operation\nThe first number:");
-                int N1 = Integer.parseInt(getStringInput());
-                System.out.printf("The second number:");
-                int N2 = Integer.parseInt(getStringInput());
-                calculator.addition(N1, N2);
-            } else if (choose == 2) {
-                System.out.println("Subtraction operation\nThe first number:");
-                int N1 = Integer.parseInt(getStringInput());
-                System.out.printf("The second number:");
-                int N2 = Integer.parseInt(getStringInput());
-                calculator.subtraction(N1, N2);
-            } else if (choose == 3) {
-                System.out.println("Division operation\nThe first number:");
-                int N1 = Integer.parseInt(getStringInput());
-                System.out.println("The second number (not zero)");
-                int N2 = Integer.parseInt(getStringInput());
-                calculator.division(N1, N2);
-            } else if (choose == 4) {
-                System.out.println("multiplication operation\nThe first number:");
-                int N1 = Integer.parseInt(getStringInput());
-                System.out.println("The second number: ");
-                int N2 = Integer.parseInt(getStringInput());
-                calculator.multiplication(N1, N2);
-            } else if (choose == 5) {
-                System.out.println("The calculator is terminated!!");
-                break;
+            switch (choose) {
+                case 1:
+                    System.out.println("Addition operation\nThe first number:");
+                    int N1 = Integer.parseInt(getStringInput());
+                    System.out.printf("The second number:");
+                     int N2 = Integer.parseInt(getStringInput());
+                    calculator.addition(N1, N2);
+                    break;
+                case 2:
+                   System.out.println("Subtraction operation\nThe first number:");
+                   N1 = Integer.parseInt(getStringInput());
+                   System.out.printf("The second number:");
+                   N2 = Integer.parseInt(getStringInput());
+                   calculator.subtraction(N1, N2);
+                   break;
+                case 3:
+                  System.out.println("Division operation\nThe first number:");
+                  N1 = Integer.parseInt(getStringInput());
+                  System.out.println("The second number (not zero)");
+                  N2 = Integer.parseInt(getStringInput());
+                  calculator.division(N1, N2);
+                  break;
+                case 4:
+                    System.out.println("multiplication operation\nThe first number:");
+                    N1 = Integer.parseInt(getStringInput());
+                    System.out.println("The second number: ");
+                    N2 = Integer.parseInt(getStringInput());
+                    calculator.multiplication(N1, N2);
+                    break;
+                case 5:
+                    System.out.println("The calculator is terminated!!");
+                    return;
+                default:
+                    System.out.println("The input is not valid.");
+                    break;
             }
 
         }
