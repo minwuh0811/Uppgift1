@@ -31,17 +31,9 @@ class MainTest {
     }
 
     @Test
-    void numberOfPlus() {
+    void numberOfPlus1() {
         Main main=new Main();
-        int intInput=5;
-        String output="+++++";
-        assertEquals(main.numberOfPlus(intInput),output);
-    }
-
-    @Test
-    void printPlus() {
-        Main main=new Main();
-        int intInput=5;
-        assertEquals(main.printPlus(intInput).size(),intInput);
+        int number=4;
+        assertEquals(main.numberOfPlus(4),"++++\n+++\n++\n+\n");
     }
 }
