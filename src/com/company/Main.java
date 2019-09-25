@@ -192,28 +192,28 @@ public class Main {
                 case 1:
                     System.out.println("Addition operation\nThe first number:");
                     int N1 = Integer.parseInt(getStringInput());
-                    System.out.printf("The second number:");
-                     int N2 = Integer.parseInt(getStringInput());
+                    System.out.printf("The second number: \n");
+                    int N2 = Integer.parseInt(getStringInput());
                     calculator.addition(N1, N2);
                     break;
                 case 2:
                    System.out.println("Subtraction operation\nThe first number:");
                    N1 = Integer.parseInt(getStringInput());
-                   System.out.printf("The second number:");
+                   System.out.printf("The second number: \n");
                    N2 = Integer.parseInt(getStringInput());
                    calculator.subtraction(N1, N2);
                    break;
                 case 3:
                   System.out.println("Division operation\nThe first number:");
                   N1 = Integer.parseInt(getStringInput());
-                  System.out.println("The second number (not zero)");
+                  System.out.println("The second number (not zero)\n");
                   N2 = Integer.parseInt(getStringInput());
                   calculator.division(N1, N2);
                   break;
                 case 4:
                     System.out.println("multiplication operation\nThe first number:");
                     N1 = Integer.parseInt(getStringInput());
-                    System.out.println("The second number: ");
+                    System.out.println("The second number: \n");
                     N2 = Integer.parseInt(getStringInput());
                     calculator.multiplication(N1, N2);
                     break;
